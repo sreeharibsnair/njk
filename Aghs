@@ -1,0 +1,28 @@
+# enter 2 lists of integers. 
+# check (a) whether lists are of same length 
+# (b) whether lists have the same sum 
+# (c) whether lists have common values
+
+a = list(map(int, input("enter 1 list integers: ").split(',')))
+b = list(map(int, input("enter 2 list integers: ").split(',')))
+
+print("first list =", a)
+print("second list =", b)
+
+# Check same length
+if len(a) == len(b):
+    print("2 lists have same length")
+else:
+    print("2 lists do not have same length")
+
+# Check same sum
+if sum(a) == sum(b):
+    print("2 lists have same sum")
+else:
+    print("2 lists do not have same sum")
+
+# Check common values
+if set(a).intersection(set(b)):
+    print("Common values in both lists:", set(a).intersection(set(b)))
+else:
+    print("No common values in both lists")
