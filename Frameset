@@ -1,0 +1,82 @@
+Frame.html
+
+<html>
+<head>
+    <title>Frame</title>
+</head>
+<frameset cols="50%,50%" frameborder="0">
+    <frame src="mainpagelink.html">
+    <frame src="page1.html">
+</frameset>
+</html>
+
+
+
+Mainpagelink.html
+
+<html>
+<head>
+    <title>Navigation</title>
+</head>
+<body bgcolor="green">
+<br><br>
+<center>
+    <h1>Main Page</h1>
+</center>
+<br><br>
+<ul type="square">
+    <li><a href="floating.html" target="_blank">Floating</a></li>
+    <li><a href="navigationframe.html" target="_blank">Navigation</a></li>
+    <li><a href="mixedframe.html" target="_blank">Mixed</a></li>
+</ul>
+</body>
+</html>
+
+floating html
+
+<html>
+<head>
+    <title>Floating</title>
+</head>
+<body bgcolor="wheat">
+    <h1>Floating content using iframe</h1>
+    <iframe src="floatingcontent.html" width="150px" height="100px" 
+            name="floatingcontent">
+    </iframe>
+    <br><br>
+    <a href="frame.html" target="_parent">
+        <button>Main Page</button>
+    </a>
+</body>
+</html>
+
+
+
+navigationframe.html
+
+<html>
+<head>
+    <title>Navigation Frame</title>
+</head>
+<frameset cols="50%,50%" frameborder="0">
+    <frame src="navigationlink.html">
+    <frame src="page1.html" name="navigationpage">
+</frameset>
+</html>
+
+
+
+navigation link.html
+
+<html>
+<head>
+    <title>Navigation</title>
+</head>
+<body bgcolor="lavender">
+<center>
+    <h1>Main Page</h1>
+</center>
+</body>
+</html>
+
+
