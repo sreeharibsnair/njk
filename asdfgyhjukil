@@ -1,0 +1,16 @@
+#9. Generate a list of four digit numbers in a given range with all their digits even and the number is a perfect square.
+import math
+a,b=map(int,input("Enter 4 digit range: ").split())
+found=False
+print("4-digit perfect squares with all even digits:")
+for i in range(a,b+1):
+    root=int(math.sqrt(i))
+    if root*root==i:
+        for d in str(i):
+            if int(d)%2!=0:
+                break
+        else:
+            print(i)
+            found=True
+if not found:
+    print("No numbers found in this range")
