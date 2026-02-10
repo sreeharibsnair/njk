@@ -1,34 +1,29 @@
 import { Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
-const StateBasics = () => {
-  const [name, setName] = useState("SIDHU")
-  const [input, setInput] = useState("")
+const Counter = () => {
+  const [count, setC] = useState(0)
 
-  const inputHandler = (e) => {
-    setInput(e.target.value)
+  const increment = () => {
+    setC(count + 1)
   }
 
-  const handleClick = () => {
-    setName(input)
+  const decrement = () => {
+    setC(count - 1)
   }
 
   return (
     <div>
+      <h1>COUNTER {count}</h1>
+      <Button variant='contained' color='primary' onClick={increment}>
+        +
+      </Button>
       <br /><br />
-      <h1>WELCOME {name}</h1>
-      <TextField 
-        variant="outlined" 
-        value={input} 
-        onChange={inputHandler} 
-        placeholder="Enter your name" 
-      />
-      <br /><br />
-      <Button variant='contained' onClick={handleClick}>
-        Submit
+      <Button variant='contained' color='secondary' onClick={decrement}>
+        -
       </Button>
     </div>
   )
 }
 
-export default StateBasics
+export default Counter
