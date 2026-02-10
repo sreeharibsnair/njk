@@ -1,30 +1,27 @@
-import React, { useState } from 'react'
-import { Button } from '@mui/material'
+import React, { useState, useEffect } from 'react'
 
-const ButtonCh = () => {
-    const [name, setName] = useState("")
+const Name = () => {
+    const [name, setname] = useState("")
 
-    const handleClick = (tech) => {
-        setName(tech)
+    const inpt2 = () => {
+        setname("Angular")
     }
+
+    const inpt3 = () => {
+        setname("Python")
+    }
+
+    useEffect(() => {
+        inpt2()
+    }, [])
 
     return (
         <div>
-            <br />
-            {/* Display the welcome message only if a button has been clicked */}
-            {name && <h1>Welcome to {name}</h1>}
-            
-            <Button variant='contained' onClick={() => handleClick("React.js")}>
-                React.js
-            </Button>
-            <Button variant='contained' onClick={() => handleClick("Express.js")}>
-                Express.js
-            </Button>
-            <Button variant='contained' onClick={() => handleClick("Node.js")}>
-                Node.js
-            </Button>
+            <h3>Welcome {name}</h3>
+            <button onClick={inpt2}>Change to Angular</button>
+            <button onClick={inpt3}>Change to Python</button>
         </div>
     )
 }
 
-export default ButtonCh
+export default Name
