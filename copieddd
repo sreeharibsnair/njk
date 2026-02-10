@@ -1,29 +1,30 @@
-import { Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
+import { Button } from '@mui/material'
 
-const Counter = () => {
-  const [count, setC] = useState(0)
+const ButtonCh = () => {
+    const [name, setName] = useState("")
 
-  const increment = () => {
-    setC(count + 1)
-  }
+    const handleClick = (tech) => {
+        setName(tech)
+    }
 
-  const decrement = () => {
-    setC(count - 1)
-  }
-
-  return (
-    <div>
-      <h1>COUNTER {count}</h1>
-      <Button variant='contained' color='primary' onClick={increment}>
-        +
-      </Button>
-      <br /><br />
-      <Button variant='contained' color='secondary' onClick={decrement}>
-        -
-      </Button>
-    </div>
-  )
+    return (
+        <div>
+            <br />
+            {/* Display the welcome message only if a button has been clicked */}
+            {name && <h1>Welcome to {name}</h1>}
+            
+            <Button variant='contained' onClick={() => handleClick("React.js")}>
+                React.js
+            </Button>
+            <Button variant='contained' onClick={() => handleClick("Express.js")}>
+                Express.js
+            </Button>
+            <Button variant='contained' onClick={() => handleClick("Node.js")}>
+                Node.js
+            </Button>
+        </div>
+    )
 }
 
-export default Counter
+export default ButtonCh
