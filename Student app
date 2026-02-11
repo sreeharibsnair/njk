@@ -122,3 +122,9 @@ function App() {
 
 export default App;
 
+
+
+
+
+
+npm i react-router-dom axios @mui/material @emotion/react @emotion/styled
