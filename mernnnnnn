@@ -1,0 +1,245 @@
+LOGIn
+
+import React from 'react';
+
+const Login = () => {
+  return (
+    <div>
+      <br /><br />
+      <h1>LOGIN PAGE</h1>
+      <input type="email" name="Email" id="Email" placeholder="Enter Your Email" /><br /><br />
+      <input type="password" name="Password" id="Password" placeholder="Enter Your Password" /><br /><br />
+      <button>Login</button>
+    </div>
+  );
+};
+
+export default Login;
+
+
+
+
+
+
+
+
+
+
+sign-up 
+
+
+import React, { useState } from 'react';
+import { TextField, Button } from '@mui/material';
+
+const SignUp = () => {
+  const [rememberMe, setRememberMe] = useState(false);
+
+  return (
+    <div>
+      <br /><br />
+      <h1>SIGN UP</h1>
+      <TextField label="Name" variant="standard" /><br />
+      <TextField label="Email" variant="standard" /><br />
+      <TextField label="Password" variant="standard" /><br /><br />
+      <Button variant="contained" color="primary">Sign Up</Button><br />
+    </div>
+  );
+};
+
+export default SignUp;
+
+
+
+
+
+
+navbar
+
+
+
+import React from 'react';
+import { AppBar, Button, Toolbar, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+const NavBar = () => {
+  return (
+    <div>
+      <br /><br />
+      <AppBar>
+        <Toolbar>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            SIDHU
+          </Typography>
+          <Link to="/login"><Button variant="contained" color="info">Login</Button></Link>&nbsp;
+          <Link to="/signup"><Button variant="contained" color="info">SignUp</Button></Link>&nbsp;
+          <Link to="/table"><Button variant="contained" color="info">Table</Button></Link>&nbsp;
+          <Link to="/state"><Button variant="contained" color="info">State</Button></Link>&nbsp;
+          <Link to="/count"><Button variant="contained" color="info">Counter</Button></Link>&nbsp;
+          <Link to="/button"><Button variant="contained" color="info">Buttons</Button></Link>&nbsp;
+          <Link to="/card"><Button variant="contained" color="info">Cards</Button></Link>&nbsp;
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
+
+export default NavBar;
+
+
+
+
+
+
+
+
+statebasics
+
+
+import React, { useState } from 'react';
+import { Button, TextField } from '@mui/material';
+
+const StateBasics = () => {
+  const [name, setName] = useState("SIDHU");
+  const [input, setInput] = useState("");
+
+  const inputHandler = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleClick = () => {
+    setName(input);
+  };
+
+  return (
+    <div>
+      <br /><br />
+      <h1>WELCOME {name}</h1>
+      <TextField variant="outlined" value={input} onChange={inputHandler} placeholder="Enter your name" />
+      <br /><br />
+      <Button variant="contained" onClick={handleClick}>Submit</Button>
+    </div>
+  );
+};
+
+export default StateBasics;
+
+
+
+
+
+
+
+data
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+
+const TableData = () => {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => {
+        setUser(res.data);
+        console.log(res.data);
+      });
+  }, []);
+
+  return (
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Username</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Address</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {user.map((val) => (
+            <TableRow key={val.id}>
+              <TableCell>{val.name}</TableCell>
+              <TableCell>{val.username}</TableCell>
+              <TableCell>{val.email}</TableCell>
+              <TableCell>{val.address.city}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
+
+export default TableData;
+
+
+
+
+buttonch
+
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+
+const ButtonCh = () => {
+  const [name, setName] = useState("");
+
+  const handleClick = (a) => {
+    setName(a);
+  };
+
+  return (
+    <div>
+      <br />
+      {name && <h1>WELCOME {name}</h1>}
+      <br /><br />
+      <Button variant="contained" onClick={() => handleClick("React.Js")}>REACT</Button>&nbsp;
+      <Button variant="contained" onClick={() => handleClick("Express.Js")}>EXPRESS</Button>&nbsp;
+      <Button variant="contained" onClick={() => handleClick("Node.Js")}>NODE</Button>&nbsp;
+    </div>
+  );
+};
+
+export default ButtonCh;
+
+
+
+
+
+
+
+counter
+
+
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+
+const Counter = () => {
+  const [count, setC] = useState(0);
+
+  const incre = () => {
+    setC(count + 1);
+  };
+
+  const decre = () => {
+    setC(count - 1);
+  };
+
+  return (
+    <div>
+      <h1>COUNTER {count}</h1>
+      <Button variant="contained" color="success" onClick={incre}>+</Button>
+      <br /><br />
+      <Button variant="contained" color="secondary" onClick={decre}>-</Button>
+    </div>
+  );
+};
+
+export default Counter;
+
+
+
+
+
+
