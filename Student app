@@ -128,3 +128,54 @@ export default App;
 
 
 npm i react-router-dom axios @mui/material @emotion/react @emotion/styled
+
+
+
+
+App.jsx
+
+
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import View from './components/View'
+import Add from './components/Add'
+
+function App() {
+  return (
+    <Router>
+      {/* The Navbar stays visible on every page */}
+      <Navbar />
+      
+      <div style={{ padding: '20px' }}>
+        <Routes>
+          {/* Default path shows the View/Table component */}
+          <Route path="/" element={<View />} />
+          
+          {/* /add path shows the Student Form component */}
+          <Route path="/add" element={<Add />} />
+        </Routes>
+      </div>
+    </Router>
+  )
+}
+
+export default App
+
+
+
+
+Main.jsx
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import { CssBaseline } from '@mui/material'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    {/* CssBaseline kicks out default browser styles so MUI looks perfect */}
+    <CssBaseline />
+    <App />
+  </React.StrictMode>,
+)
