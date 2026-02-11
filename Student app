@@ -179,3 +179,24 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
+
+
+
+
+import { Button, TextField } from '@mui/material'
+import React from 'react'
+
+const Student = () => {
+  return (
+    <div>
+        <br /><br /><br />
+        <TextField label="name" variant='standard'/><br /><br />
+        <TextField label="age" variant='standard'/><br /><br />
+        <TextField label="department" variant='standard'/><br /><br />
+        <TextField label="mark" variant='standard'/><br /><br />
+        <Button variant="contained">login</Button>
+    </div>
+  )
+}
+
+export default Student
