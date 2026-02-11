@@ -1,0 +1,124 @@
+import { AppBar, Toolbar, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => (
+  <AppBar position="static">
+    <Toolbar>
+      <Button color="inherit" component={Link} to="/">View Students</Button>
+      <Button color="inherit" component={Link} to="/add">Add Student</Button>
+    </Toolbar>
+  </AppBar>
+);
+
+export default Navbar;
+
+
+
+
+
+
+
+
+Add.jsx
+
+import { useState } from 'react';
+import { TextField, Button, Stack, Typography } from '@mui/material';
+import axios from 'axios';
+
+const Add = () => {
+  const [student, setStudent] = useState({ name: '', age: '', department: '', mark: '' });
+
+  const handleSubmit = () => {
+    // Replace URL with your actual API endpoint
+    axios.post('https://your-api.com/students', student)
+      .then(() => alert('Student Added!'));
+  };
+
+  return (
+    <Stack spacing={2} sx={{ p: 3, maxWidth: 400 }}>
+      <Typography variant="h5">Add Student</Typography>
+      <TextField label="Name" onChange={(e) => setStudent({...student, name: e.target.value})} />
+      <TextField label="Age" type="number" onChange={(e) => setStudent({...student, age: e.target.value})} />
+      <TextField label="Department" onChange={(e) => setStudent({...student, department: e.target.value})} />
+      <TextField label="Mark" type="number" onChange={(e) => setStudent({...student, mark: e.target.value})} />
+      <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+    </Stack>
+  );
+};
+
+export default Add;
+
+
+
+
+
+
+
+View.jsx
+
+
+import { useEffect, useState } from 'react';
+import { Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@mui/material';
+import axios from 'axios';
+
+const View = () => {
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://your-api.com/students')
+      .then(res => setStudents(res.data));
+  }, []);
+
+  return (
+    <Paper sx={{ m: 3 }}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Age</TableCell>
+            <TableCell>Department</TableCell>
+            <TableCell>Mark</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {students.map((s, i) => (
+            <TableRow key={i}>
+              <TableCell>{s.name}</TableCell>
+              <TableCell>{s.age}</TableCell>
+              <TableCell>{s.department}</TableCell>
+              <TableCell>{s.mark}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+};
+
+export default View;
+
+
+
+
+
+Routing.jsx
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Navbar';
+import Add from './Add';
+import View from './View';
+
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<View />} />
+        <Route path="/add" element={<Add />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
